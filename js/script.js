@@ -1,3 +1,5 @@
+AOS.init();
+
 // --- Dark Mode Logic with localStorage ---
 const toggleBtn = document.getElementById('theme-toggle');
 const toggleIcon = toggleBtn.querySelector('i');
