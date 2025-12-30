@@ -7,13 +7,14 @@
     --accent-hover: #ff7b00;
     --card-bg: #333333;
     --shadow: rgba(0, 0, 0, 0.4);
+
+    --home-bg: linear-gradient(312deg, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 1) 60%, rgb(49, 49, 49) 100%);
     
     --nav-glass: rgba(26, 26, 26, 0.7);
     --nav-border: rgba(255, 255, 255, 0.1);
-    --nav-height: 100px;
+    --nav-height: 80px;
 }
 
-/*LIGHT MODE*/
 [data-theme="light"] {
     --primary-bg: #E0E0E0;
     --secondary-bg: #efefef;
@@ -23,6 +24,8 @@
     --accent-hover: #b34d00;
     --card-bg: #ffffff;
     --shadow: rgba(0, 0, 0, 0.1);
+
+    --home-bg: linear-gradient(180deg,rgba(224, 224, 224, 1) 0%, rgba(224, 224, 224, 1) 30%, rgba(102, 102, 102, 1) 100%);
 
     --nav-glass: rgba(224, 224, 224, 0.7);
     --nav-border: rgba(0, 0, 0, 0.05);
@@ -105,6 +108,7 @@ img {
     transform: translateY(-2px);
 }
 
+
 header {
     position: fixed;
     top: 0;
@@ -115,12 +119,12 @@ header {
     display: flex;
     align-items: center;
 
-    /* GLASS EFFECT */
+
     background: var(--nav-glass);
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border-bottom: 1px solid var(--nav-border);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.050);
 }
 
 .nav-container {
@@ -205,20 +209,22 @@ header {
     background-color: var(--accent-hover);
 }
 
+
 .menu-toggle {
     display: none;
     font-size: 1.8rem;
     cursor: pointer;
 }
 
+
 #home {
     min-height: calc(100vh - var(--nav-height));
-    background: #0a0a0a;
-    background: linear-gradient(312deg, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 1) 60%, rgba(36, 36, 36, 1) 100%);
+    background: var(--primary-bg);
+    background: var(--home-bg);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 20px;
+    padding-top: 50px;
     overflow: hidden; 
 }
 
@@ -268,7 +274,6 @@ header {
     width: 100%; 
     max-width: 450px; 
     height: auto;
-    cursor: pointer;
 }
 
 .tilt-card {
@@ -285,6 +290,7 @@ header {
     border: none; 
     transform: translateZ(20px); 
 }
+
 
 #about {
     padding: 100px 0;
@@ -352,16 +358,156 @@ header {
     line-height: 1.8;
 }
 
-.about-educ {
-    display: flex;
-    align-items: center;
-    gap: 80px;
-    margin-bottom: 120px;
+
+
+.subsection-title {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin: 60px 0 30px;
+    text-align: left;
+    border-left: 5px solid var(--accent);
+    padding-left: 15px;
+}
+
+.section-divider {
+    height: 2px;
+    background: var(--card-bg);
+    margin: 80px 0;
     width: 100%;
-    overflow: hidden; 
+}
+
+/* 1. Education Card (Unique Layout) */
+.education-section {
+    width: 100%;
+}
+
+.education-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 40px;
+    display: flex;
+    gap: 30px;
+    box-shadow: 0 15px 40px var(--shadow);
+    border: 1px solid rgba(255,255,255,0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.education-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 8px;
+    height: 100%;
+    background: var(--accent);
+}
+
+.edu-icon {
+    font-size: 3rem;
+    color: var(--accent);
+    min-width: 60px;
+}
+
+.edu-content h4 {
+    font-size: 1.8rem;
+    color: var(--text-main);
+    margin-bottom: 5px;
+}
+
+.edu-year {
+    display: inline-block;
+    background: var(--secondary-bg);
+    color: var(--accent);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.edu-content p {
+    color: var(--text-muted);
+    font-size: 1.2rem;
 }
 
 
+
+.tech-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.tech-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 30px 20px;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s, background 0.3s, border-color 0.3s;
+}
+
+.tech-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.05);
+    border-color: var(--accent);
+}
+
+.tech-card i {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 20px;
+}
+
+.tech-card h4 {
+    font-size: 1.5rem;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.tech-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+}
+
+.hobbies-section {
+    margin-top: 60px;
+}
+
+.hobbies-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 20px;
+}
+
+.hobby-pill {
+    background: var(--card-bg);
+    color: var(--text-main);
+    padding: 12px 25px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    box-shadow: 0 5px 15px var(--shadow);
+    transition: transform 0.3s, background 0.3s, color 0.3s;
+    cursor: default;
+    border: 1px solid transparent;
+}
+
+.hobby-pill:hover {
+    transform: scale(1.3) rotate(-4deg);
+    background: var(--accent);
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(220, 95, 0, 0.4);
+}
+
+.hobby-pill.large {
+    font-size: 1.5rem;
+    padding: 15px 30px;
+    background: var(--secondary-bg);
+    border: 1px solid var(--accent);
+}
 
 
 
@@ -373,7 +519,7 @@ header {
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 20px;
+    gap: 40px;
 }
 
 .skill-category {
@@ -392,7 +538,7 @@ header {
 
 .tags {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: center;
     gap: 10px;
 }
@@ -402,8 +548,44 @@ header {
     color: var(--text-main);
     padding: 5px 12px;
     border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-weight: bolder;
+
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.code-tools, .auto-tools, .edit-tools, .art-tools, .misc-tools{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px;
+    border-radius: 20px;
+
+}
+
+.fa-brands {
+    font-size: 2em;
+}
+
+.fa-html5 {
+    color: #ca5902;
+}
+
+.fa-css3-alt {
+    color: #214aff;
+}
+
+.fa-square-js {
+    color: rgb(226, 226, 20);
+}
+
+.fa-java {
+    color: #f87612;
+}
+
+.fa-python {
+    color: rgb(8, 70, 241);
 }
 
 
@@ -419,6 +601,7 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     gap: 40px;
+    padding-bottom: 2.5rem;
 }
 
 .project-card {
@@ -450,6 +633,10 @@ header {
     object-fit: cover;
 }
 
+.project-thumb.video-thumb {
+    cursor: pointer;
+}
+
 .project-info {
     padding: 25px;
 }
@@ -469,14 +656,12 @@ header {
     margin-top: 15px;
     padding-top: 15px;
     border-top: 1px solid var(--secondary-bg);
-    font-size: 0.9rem;
+    font-size: 1.2rem;
 }
 
 .project-meta div {
     margin-bottom: 5px;
 }
-
-
 
 
 
@@ -488,6 +673,7 @@ header {
 .contact-container {
     display: flex;
     flex-wrap: wrap;
+    padding: 100px 0;
     gap: 40px;
 }
 
@@ -563,18 +749,6 @@ textarea.form-control {
     height: 120px;
 }
 
-footer {
-    background: var(--text-main);
-    color: var(--secondary-bg);
-    text-align: center;
-    padding: 20px 0;
-    margin-top: 50px;
-}
-
-
-
-
-
 
 @media (max-width: 768px) {
     .nav-container {
@@ -587,14 +761,16 @@ footer {
         top: var(--nav-height);
         left: 0;
         width: 100%;
-        background: var(--card-bg);
-        backdrop-filter: blur(15px);
         flex-direction: column;
         padding: 30px;
-        box-shadow: 0 5px 10px var(--shadow);
         gap: 20px;
         text-align: center;
         border-bottom: 1px solid var(--nav-border);
+
+        background: var(--nav-glass);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
 
     .nav-links.active {
@@ -627,14 +803,12 @@ footer {
         max-width: 80%;
     }
 
-    /* ABOUT SECTION MOBILE - Stack Logic */
     .about-group {
-        flex-direction: column; /* Force column on mobile */
+        flex-direction: column; 
         text-align: center;
         gap: 30px;
     }
     
-    /* Ensure even children also stack vertically, not reverse row */
     .about-group:nth-of-type(even) {
         flex-direction: column;
     }
@@ -647,6 +821,26 @@ footer {
 
     .about-desc h3 {
         display: block;
-        border-bottom: none; /* Simplify headers on mobile */
+        border-bottom: none; 
+    }
+
+    
+    .education-card {
+        flex-direction: column;
+        text-align: left;
+    }
+    
+    .edu-icon {
+        margin-bottom: 15px;
+    }
+    
+    .tech-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .skills-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 20px;
     }
 }
