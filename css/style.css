@@ -13,6 +13,16 @@
     --nav-glass: rgba(26, 26, 26, 0.7);
     --nav-border: rgba(255, 255, 255, 0.1);
     --nav-height: 80px;
+
+    --card-width: 250px;
+    --card-border-radius: 16px;
+    --row-increment: 10px;
+    --card-wide: 15;
+    --card-small: 26;
+    --card-medium: 32;
+    --card-medium2: 35;
+    --card-large: 43;
+    --card-long: 52;
 }
 
 [data-theme="light"] {
@@ -66,12 +76,13 @@ img {
     display: block;
 }
 
-/* --- UTILITIES --- */
+
 .container {
     max-width: 1500px;
     margin: 0 auto;
     padding: 0 20px;
 }
+
 
 .section-title {
     text-align: center;
@@ -363,6 +374,13 @@ header {
     padding-left: 15px;
 }
 
+.artwork-title {
+    font-size: 2rem;
+    color: var(--text-main);
+    margin: 60px 0 30px;
+    text-align: center;
+}
+
 .section-divider {
     height: 2px;
     background: var(--card-bg);
@@ -370,7 +388,6 @@ header {
     width: 100%;
 }
 
-/* 1. Education Card (Unique Layout) */
 .education-section {
     width: 100%;
 }
@@ -658,10 +675,69 @@ header {
 }
 
 
+#gallery {
+    padding: 100px 0;
+}
+
+.pin-container {
+    margin: 0 auto;
+    padding: 0;
+    width: 90%;
+    max-width: 1200px; 
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, var(--card-width));
+    grid-auto-rows: var(--row-increment);
+    justify-content: center;
+}
+
+.card  {
+    padding: 0;
+    margin: 15px 10px;
+    border-radius: var(--card-border-radius);
+
+
+    background-color: #d6d6d6;
+    object-fit: cover;
+    transition: all 0.5s ease;
+}
+
+.card img {
+    border-radius: var(--card-border-radius);
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card-wide {
+    grid-row-end: span var(--card-wide);
+}
+
+.card-small {
+    grid-row-end: span var(--card-small);
+}
+
+.card-medium {
+    grid-row-end: span var(--card-medium);
+}
+
+.card-medium2 {
+    grid-row-end: span var(--card-medium2);
+}
+
+.card-large {
+    grid-row-end: span var(--card-large);
+}
+
+.card-long {
+    grid-row-end: span var(--card-long);
+}
 
 
 #contact {
     padding: 100px 0;
+    background: var(--secondary-bg);
 }
 
 .contact-container {
@@ -744,7 +820,7 @@ textarea.form-control {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
     .nav-container {
         padding: 0 20px; 
     }
@@ -795,6 +871,17 @@ textarea.form-control {
 
     .tilt-box {
         max-width: 80%;
+    }
+
+    .artlayout {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+
+    .art img{
+        width: 100%;
+        padding: 10px;
     }
 
     .about-group {
